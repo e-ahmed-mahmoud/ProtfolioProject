@@ -1,0 +1,8 @@
+﻿body {
+}
+
+.table th, .table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+

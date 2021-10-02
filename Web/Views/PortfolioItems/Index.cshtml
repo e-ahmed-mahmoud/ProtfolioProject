@@ -1,0 +1,45 @@
+﻿@model Web.ViewModels.HomeViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="margin:120px; padding:50px;">
+    <h1>Manage Projects List</h1>
+
+    <p >
+        <a asp-action="Create" class="btn btn-info"> Create New </a>
+    </p>
+    <table class="table table-responsive table-striped" align="center" style="text-align:center; align-items:center; justify-content:center; vertical-align:middle;" cellpadding="20">
+        <thead>
+            <tr>
+                <th style="align-content:center; align-items:center; justify-content:center;">Name </th>
+                <th style="align-content:center; align-items:center; justify-content:center;">Project </th>
+                <th style="align-content:center; align-items:center; justify-content:center;"> Descripation </th>
+                <th style="align-content:center; align-items:center; justify-content:center;"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PortfoloItems) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <img src="~/img/portfolio/@item.PicturePath" width="200" class="img-thumbnail" alt="Alternate Text" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripation)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit" style="font-size:large; margin:2px;"></i></a> |
+                            <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-eye"  style="font-size: large; margin:2px;"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"  style="font-size: large; margin:2px;"></i></a>
+                        </td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>
